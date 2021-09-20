@@ -6,21 +6,21 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 16:58:33 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 17:19:45 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:12:35 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "coordinate.h"
+#include "ft_coordinate.h"
 #include <stddef.h>
 #include <stdlib.h>
 
 typedef struct s_coordinate
 {
-	unsigned int	x;
-	unsigned int	y;
+	size_t	x;
+	size_t	y;
 }	t_coord;
 
-t_coord	*init_coord(int x, int y)
+t_coord	*ft_coord_init(int x, int y)
 {
 	t_coord	*coord;
 
@@ -30,18 +30,23 @@ t_coord	*init_coord(int x, int y)
 	return (coord);
 }
 
-void	free_coord(t_coord **coord)
+void	ft_coord_free(t_coord **coord)
 {
 	free(*coord);
 	*coord = NULL;
 }
 
-void	ft_getx(t_coord *coord)
+size_t	ft_coord_x(t_coord *coord)
 {
 	return (coord->x);
 }
 
-void	ft_gety(t_coord *coord)
+size_t	ft_coord_y(t_coord *coord)
 {
 	return (coord->y);
+}
+
+size_t	ft_coord_1d(t_coord *coord, size_t width, size_t height)
+{
+	return (width*coord->y + coord->x);
 }

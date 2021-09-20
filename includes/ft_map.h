@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coordinate.h                                       :+:      :+:    :+:   */
+/*   ft_map.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 17:02:28 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 19:11:22 by gluisier         ###   ########.fr       */
+/*   Created: 2021/09/20 17:45:03 by gluisier          #+#    #+#             */
+/*   Updated: 2021/09/20 19:09:40 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_COORDINATE_H
-# define FT_COORDINATE_H
+#ifndef FT_MAP_H
+# define FT_MAP_H
+# include "ft_coordinate.h"
 # include <stddef.h>
 
-typedef struct s_coordinate	t_coord;
+typedef struct	s_map t_map;
 
-t_coord	*ft_coord_init(int x, int y);
-void	ft_coord_free(t_coord **coord);
-size_t	ft_coord_x(t_coord *coord);
-size_t	ft_coord_y(t_coord *coord);
-size_t	ft_coord_1d(t_coord *coord, size_t width, size_t height);
+t_map	*ft_map_init(size_t w, size_t h);
+void	ft_map_free(t_map **map);
+int		ft_map_getval(t_map *map, t_coord *coord);
+int		ft_map_setval(t_map *map, t_coord *coord, int value);
+
 #endif
