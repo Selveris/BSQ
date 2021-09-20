@@ -15,5 +15,6 @@
 
 int	ft_is_numeric(char c);
 int	ft_is_printable(char c);
+int	ft_get_val_charset(char c, char *charset);
 
 #endif

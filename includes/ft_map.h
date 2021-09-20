@@ -15,7 +15,7 @@
 # include "ft_coordinate.h"
 # include <stddef.h>
 
-typedef struct	s_map t_map;
+typedef struct s_map	t_map;
 
 t_map	*ft_map_init(size_t w, size_t h);
 void	ft_map_free(t_map **map);
