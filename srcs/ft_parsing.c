@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 22:08:41 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 23:34:38 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/21 00:08:18 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	read_header(int fd, char *charset, int *nb_line)
 	char	buffer;
 	int		i;
 
-	if (read(fd, &buffer, 1))
+	if (!read(fd, &buffer, 1))
 		return (1);
 	if (!ft_is_numeric(buffer))
 		return (1);
@@ -47,19 +47,16 @@ int	read_header(int fd, char *charset, int *nb_line)
 int	read_first_line(int fd, int *width, char *charset)
 {
 	char	buffer;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	read(fd, &buffer, 1);
-	while (buffer != '\n')
-		read(fd, &buffer, 1);
 	read(fd, &buffer, 1);
 	while (ft_is_charset(buffer, charset))
 	{
 		read(fd, &buffer, 1);
 		i++;
 	}
-	if (!ft_is_charset(buffer, charset) || buffer != '\0' || i < 1)
+	if ((buffer != '\n' && buffer != '\0') || i == 0)
 		return (1);
 	*width = i;
 	return (0);
@@ -95,7 +92,8 @@ int	read_map(int fd, t_map *map, char *charset)
 	size_t	n_line;
 	size_t	height;
 
-	read(fd, NULL, 4);
+	for(int i=0; i < 4; ++i)
+		read(fd, &buffer, 1);
 	ft_map_getdim(map, NULL, &height);
 	n_line = 0;
 	while (n_line < height)
@@ -108,7 +106,7 @@ int	read_map(int fd, t_map *map, char *charset)
 		n_line++;
 	}
 	read(fd, &buffer, 1);
-	if (buffer != '\0')
+	if (buffer != '\n')
 		return (1);
 	return (0);
 }
@@ -130,7 +128,7 @@ t_map	*parse_file(char *path)
 	if (read_header(fd, charset, &height))
 		return (ft_null_error("Header not in the norm.\n"));
 	if (read_first_line(fd, &width, charset))
-		return (ft_null_error("Line not in the norm.\n"));
+		return (ft_null_error("First line not in the norm.\n"));
 	map = ft_map_init(width, height);
 	if (map == NULL)
 		return (ft_null_error("Memory error\n"));

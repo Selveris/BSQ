@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 23:00:17 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 23:33:38 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/21 00:08:01 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	map = parse_file(argv[1]);
-	printf("%p\n", map);
 	ft_write_map(1, map, ".oX");
 }
