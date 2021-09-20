@@ -20,9 +20,11 @@ $(NAME):			$(OBJS)
 					$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS)
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
-					$(CC) $(CFLAGS) -o $@ $< -c
+					$(CC) $(CFLAGS) $(INCLUDES) -o $@ $< -c
 
 #$(TESTS_DIR)/%.o:	$(OBJS)
+
+bin:				$(OBJS)
 
 re:					fclean $(NAME)
 
@@ -35,4 +37,4 @@ fclean:				clean
 clean_test:
 					$(RM) test_parsing test_map
 
-.PHONY:				all re clean fclean
+.PHONY:				all re clean fclean bin
