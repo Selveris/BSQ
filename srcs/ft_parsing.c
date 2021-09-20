@@ -1,5 +1,5 @@
 #include "ft_map.h"
-#include "utils.h"
+#include "ft_utils.h"
 #include <fcntl.h>
 #include "ft_error.h"
 
@@ -12,11 +12,11 @@ int	read_header(int fd, t_map *map, char *charset, int *nb_line)
 		return (1);
 	if (ft_is_numeric(buffer))
 		return (1);
-	*nb_lines = buffer - '0';
+	*nb_line = buffer - '0';
 	i = 0;
 	while (i < 3)
 	{
-		read(fd, buffer, 1);
+		read(fd, &buffer, 1);
 		if (ft_is_printable(buffer))
 			charset[i] = buffer;
 		else
@@ -29,10 +29,43 @@ int	read_header(int fd, t_map *map, char *charset, int *nb_line)
 	return (0);
 }
 
-int	read_first_line(int fd, int *width);
-int	read_map(int fd, t_map *map);
+int	read_first_line(int fd, int *width, char *charset)
+{
+	char	buffer;
+	int		i;
 
-t_map	parse_file(char *path)
+	i = 0;
+	buffer = read(fd, &buffer, 1);
+	while (buffer != '\n')
+		buffer = read(fd, &buffer, 1);
+	buffer = read(fd, &buffer, 1);
+	while (ft_is_charset(buffer, charset))
+	{
+		buffer = read(fd, &buffer, 1);
+		i++;
+	}
+	if (!ft_is_charset(buffer, charset) || buffer != '\0' || i < 1)
+		return (1);
+	*width = i;
+	return (0);
+}
+
+int	read_map(int fd, t_map *map, char *charset)
+{	
+	char	buffer;
+	int		n_line;
+
+	while (buffer != '\n')
+		buffer = read(fd, &buffer, 1);
+	while (buffer != '\n')
+		buffer = read(fd, &buffer, 1);
+	n_line = 0;
+	while (n_line < map->y)
+		
+	return (0);
+}
+
+t_map	*parse_file(char *path)
 {
 	int		fd;
 	int		width;
@@ -48,8 +81,8 @@ t_map	parse_file(char *path)
 		return (ft_null_error("Cannot read file.\n"));
 	if (!read_header(fd, map, charset, &height))
 		return (ft_null_error("Header not in the norm.\n"));
-	if (!read_first_line(fd, map, charset, &width))
-		return (ft_null_error("Header not in the norm.\n"));
+	if (!read_first_line(fd, &width))
+		return (ft_null_error("Line not in the norm.\n"));
 	map = ft_map_init(width, height);
 	if (map == NULL)
 		return (ft_null_error("Memory error\n"));
