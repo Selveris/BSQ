@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 21:25:33 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 21:25:37 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 23:29:01 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void	*ft_null_error(char *s)
 {
-	ft_putstring(s);
+	ft_putstr(s);
 	return (NULL);
 }

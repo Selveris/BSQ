@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 22:08:41 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 22:08:43 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 23:34:38 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	read_header(int fd, char *charset, int *nb_line)
 	char	buffer;
 	int		i;
 
-	if (!read(fd, &buffer, 1))
+	if (read(fd, &buffer, 1))
 		return (1);
-	if (ft_is_numeric(buffer))
+	if (!ft_is_numeric(buffer))
 		return (1);
 	*nb_line = buffer - '0';
 	i = 0;
