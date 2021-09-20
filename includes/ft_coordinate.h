@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 17:02:28 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 19:11:22 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:26:26 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	ft_coord_free(t_coord **coord);
 size_t	ft_coord_x(t_coord *coord);
 size_t	ft_coord_y(t_coord *coord);
 size_t	ft_coord_1d(t_coord *coord, size_t width, size_t height);
+
 #endif

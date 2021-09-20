@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgoncalv <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 17:19:32 by bgoncalv          #+#    #+#             */
-/*   Updated: 2021/09/20 17:19:34 by bgoncalv         ###   ########.fr       */
+/*   Created: 2021/09/17 13:46:59 by bgoncalv          #+#    #+#             */
+/*   Updated: 2021/09/17 13:47:05 by bgoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
+#ifndef FT_ERROR_H
+# define FT_ERROR_H
 
-int	ft_is_numeric(char c);
-int	ft_is_printable(char c);
+void	*ft_null_error(char *s);
 
 #endif

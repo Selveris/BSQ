@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 16:58:33 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 19:12:35 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:26:57 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-typedef struct s_coordinate
+struct s_coordinate
 {
 	size_t	x;
 	size_t	y;

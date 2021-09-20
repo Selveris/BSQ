@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_numeric(char c)
+int	ft_is_numeric(char c)
 {
 	return ('0' <= c && c <= '9');
 }
 
-int	is_printable(char c)
+int	ft_is_printable(char c)
 {
 	return (' ' <= c && c <= '~');
 }
