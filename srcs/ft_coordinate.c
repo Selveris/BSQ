@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 16:58:33 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 19:59:33 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:25:26 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ size_t	ft_coord_y(t_coord *coord)
 
 size_t	ft_coord_1d(t_coord *coord, size_t width)
 {
-	return (width*coord->y + coord->x);
+	return (width * coord->y + coord->x);
 }

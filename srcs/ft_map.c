@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:52:40 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 20:06:24 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 20:32:37 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void	ft_map_getdim(t_map *map, size_t *w, size_t *h)
 {
 	if (map)
 	{
-		*w = map->w;
-		*h = map->h;
+		if (w)
+			*w = map->w;
+		if (h)
+			*h = map->h;
 	}
 }
