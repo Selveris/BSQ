@@ -1,22 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoncalv <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 17:19:23 by bgoncalv          #+#    #+#             */
-/*   Updated: 2021/09/20 22:05:44 by gluisier         ###   ########.fr       */
+/*   Created: 2021/09/20 23:00:17 by gluisier          #+#    #+#             */
+/*   Updated: 2021/09/20 23:00:29 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING_H
-# define FT_STRING_H
 
-void	ft_putchar(char c);
-void	ft_putstring(char *str);
-int		ft_atoi(char *str);
-int		ft_isspace(char c);
-int		ft_is_charset(char c, char *charset);
-
-#endif

@@ -6,12 +6,13 @@
 /*   By: bgoncalv <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:19:51 by bgoncalv          #+#    #+#             */
-/*   Updated: 2021/09/20 17:19:54 by bgoncalv         ###   ########.fr       */
+/*   Updated: 2021/09/20 22:05:55 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_string.h"
 #include "ft_utils.h"
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
@@ -31,7 +32,7 @@ int	ft_atoi(char *s)
 
 	nb = 0;
 	is_negative = 1;
-	while (is_space(*s))
+	while (ft_isspace(*s))
 		s++;
 	if ('+' == *s || *s == '-')
 	{
@@ -39,12 +40,12 @@ int	ft_atoi(char *s)
 			is_negative = -1;
 		s++;
 	}
-	while (is_numeric(*s))
+	while (ft_is_numeric(*s))
 		nb = (*(s++) - '0') + nb * 10;
 	return (is_negative * nb);
 }
 
-int	ft_is_space(char c)
+int	ft_isspace(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\r'
 		 || c == '\t' || c == '\f')
