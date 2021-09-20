@@ -19,3 +19,17 @@ int	ft_is_printable(char c)
 {
 	return (' ' <= c && c <= '~');
 }
+
+int	ft_get_val_charset(char c, char *charset)
+{
+	int	i;
+
+	i = 0;
+	while (charset[i])
+	{
+		if (charset[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}

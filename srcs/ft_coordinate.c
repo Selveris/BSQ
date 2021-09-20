@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-struct s_coordinate
+typedef struct s_coordinate
 {
 	size_t	x;
 	size_t	y;
@@ -25,6 +25,8 @@ t_coord	*ft_coord_init(int x, int y)
 	t_coord	*coord;
 
 	coord = malloc(sizeof(t_coord));
+	if (coord == NULL)
+		return (NULL);
 	coord->x = x;
 	coord->y = y;
 	return (coord);
@@ -48,5 +50,5 @@ size_t	ft_coord_y(t_coord *coord)
 
 size_t	ft_coord_1d(t_coord *coord, size_t width, size_t height)
 {
-	return (width*coord->y + coord->x);
+	return (coord->y + coord->x);
 }

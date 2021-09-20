@@ -50,18 +50,50 @@ int	read_first_line(int fd, int *width, char *charset)
 	return (0);
 }
 
+int ft_read_line (int fd, t_map *map, char *charset, int n_line)
+{	
+	char	buffer;
+	size_t	width;
+	int		i;
+	t_coord *coord;
+	
+	ft_map_getdim(map, &width, NULL);
+	i = 0;
+	while (i < width)
+	{	
+		buffer = read(fd, &buffer, 1);
+		if (!ft_is_charset(buffer, charset))
+			return (1);
+		coord = ft_coord_init(i, n_line);
+		if (coord == NULL)
+			return (1);
+		ft_map_setval(map, coord, ft_get_val_charset(buffer, charset));
+		ft_coord_free(coord);
+		i++;
+	}
+}
+
 int	read_map(int fd, t_map *map, char *charset)
 {	
 	char	buffer;
 	int		n_line;
+	size_t	height;
 
-	while (buffer != '\n')
-		buffer = read(fd, &buffer, 1);
-	while (buffer != '\n')
-		buffer = read(fd, &buffer, 1);
+	read(fd, NULL, 4);
+	ft_map_getdim(map, NULL, &height);
 	n_line = 0;
-	while (n_line < map->y)
-		
+	while (n_line < height)
+	{	
+		buffer = read(fd, &buffer, 1);
+		if (buffer != '\n')
+			return (1);
+		if (ft_read_line(fd, map, charset, n_line))
+			return (1);
+		n_line++;
+	}
+	buffer = read(fd, &buffer, 1);
+	if (buffer != '\0')
+			return (1);
 	return (0);
 }
 
@@ -79,17 +111,18 @@ t_map	*parse_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_null_error("Cannot read file.\n"));
-	if (!read_header(fd, map, charset, &height))
+	if (read_header(fd, map, charset, &height))
 		return (ft_null_error("Header not in the norm.\n"));
-	if (!read_first_line(fd, &width))
+	if (read_first_line(fd, &width, charset))
 		return (ft_null_error("Line not in the norm.\n"));
 	map = ft_map_init(width, height);
 	if (map == NULL)
 		return (ft_null_error("Memory error\n"));
 	close(fd);
 	fd = open(path, O_RDONLY);
-	if (!read_map(fd, map, charset))
+	if (read_map(fd, map, charset))
 		return (ft_null_error("Map not in the norm.\n"));
 	close(fd);
 	return (map);
 }
+
