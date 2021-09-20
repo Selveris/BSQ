@@ -17,6 +17,6 @@ void	ft_putchar(char c);
 void	ft_putstring(char *str);
 void	ft_atoi(char *str);
 int		ft_is_space(char c);
-int		is_charset(char *charset);
+int		ft_is_charset(char *charset);
 
 #endif

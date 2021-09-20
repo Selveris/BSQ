@@ -52,7 +52,7 @@ int	ft_is_space(char c)
 	return (0);
 }
 
-int	is_charset(char c, char *charset)
+int	ft_is_charset(char c, char *charset)
 {
 	while (*charset)
 		if (c == *(charset++))

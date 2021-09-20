@@ -15,8 +15,8 @@
 
 typedef struct s_coordinate	t_coord;
 
-t_coord	*init_coord(int x, int y);
-void	free_coord(t_coord **coord);
+t_coord	*ft_init_coord(int x, int y);
+void	ft_free_coord(t_coord **coord);
 void	ft_getX(t_coord *coord);
 void	ft_getY(t_coord *coord);
 #endif

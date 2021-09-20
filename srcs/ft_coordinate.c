@@ -14,13 +14,13 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-typedef struct s_coordinate
+struct s_coordinate
 {
 	unsigned int	x;
 	unsigned int	y;
-}	t_coord;
+};
 
-t_coord	*init_coord(int x, int y)
+t_coord	*ft_init_coord(int x, int y)
 {
 	t_coord	*coord;
 
@@ -30,7 +30,7 @@ t_coord	*init_coord(int x, int y)
 	return (coord);
 }
 
-void	free_coord(t_coord **coord)
+void	ft_free_coord(t_coord **coord)
 {
 	free(*coord);
 	*coord = NULL;
