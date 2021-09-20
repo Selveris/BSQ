@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:52:40 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 19:10:56 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 20:32:37 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_map_getval(t_map *map, t_coord *coord)
 {
 	if (ft_coord_x(coord) >= map->w || ft_coord_y(coord) >= map->h)
 		return (-1);
-	return (map->array[ft_coord_1d(coord, map->w, map->h)]);
+	return (map->array[ft_coord_1d(coord, map->w)]);
 }
 
 int	ft_map_setval(t_map *map, t_coord *coord, int value)
@@ -58,6 +58,17 @@ int	ft_map_setval(t_map *map, t_coord *coord, int value)
 		return (-1);
 	if (ft_coord_x(coord) >= map->w || ft_coord_y(coord) >= map->h)
 		return (-1);
-	map->array[ft_coord_1d(coord, map->w, map->h)] = value;
+	map->array[ft_coord_1d(coord, map->w)] = value;
 	return (0);
+}
+
+void	ft_map_getdim(t_map *map, size_t *w, size_t *h)
+{
+	if (map)
+	{
+		if (w)
+			*w = map->w;
+		if (h)
+			*h = map->h;
+	}
 }

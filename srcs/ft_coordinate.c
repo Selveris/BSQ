@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 16:58:33 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/20 19:26:57 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/20 21:25:26 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct s_coordinate
 {
 	size_t	x;
 	size_t	y;
-}	t_coord;
+};
 
 t_coord	*ft_coord_init(int x, int y)
 {
@@ -48,7 +48,7 @@ size_t	ft_coord_y(t_coord *coord)
 	return (coord->y);
 }
 
-size_t	ft_coord_1d(t_coord *coord, size_t width, size_t height)
+size_t	ft_coord_1d(t_coord *coord, size_t width)
 {
-	return (coord->y + coord->x);
+	return (width * coord->y + coord->x);
 }
