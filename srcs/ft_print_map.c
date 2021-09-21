@@ -78,6 +78,7 @@ t_error	ft_write_ext_line(int fd, t_map *map, char *charset, size_t line_nb)
 		ft_coord_free(&coord);
 		++x;
 	}
+	ft_putchar('\n');
 	return (SUCCESS);
 }
 
