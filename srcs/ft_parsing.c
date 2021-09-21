@@ -6,7 +6,7 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 22:08:41 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/21 00:08:18 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/21 14:22:15 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_read_line(int fd, t_map *map, char *charset, size_t n_line)
 
 	ft_map_getdim(map, &width, NULL);
 	buffer = malloc (sizeof(char) * width);
-	if ((int) width != read(fd, buffer, width))
+	if (!buffer || (int) width != read(fd, buffer, width))
 		return (1);
 	i = 0;
 	while (i < width)
