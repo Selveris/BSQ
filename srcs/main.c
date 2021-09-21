@@ -15,6 +15,8 @@
 #include "ft_print_map.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "ft_solver.h"
+#include "ft_string.h"
 
 int	main(int argc, char **argv)
 {
@@ -25,7 +27,10 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	map = parse_file(argv[1], &charset);
-	ft_write_map(1, map, charset);
+	ft_write_ext_map(1, map, charset);
+	ft_putstr("solution : \n\n");
+	write_sqtomap(map);
+	ft_write_ext_map(1, map, charset);
 	free(charset);
 	ft_map_free(&map);
 //	while (1);

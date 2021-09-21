@@ -12,13 +12,7 @@
 
 #include "ft_map.h"
 #include <stdlib.h>
-
-struct	s_map
-{
-	size_t	w;
-	size_t	h;
-	int		*array;
-};
+#include "ft_map.h"
 
 t_map	*ft_map_init(size_t w, size_t h)
 {
@@ -52,6 +46,13 @@ int	ft_map_getval(t_map *map, t_coord *coord)
 	return (map->array[ft_coord_1d(coord, map->w)]);
 }
 
+int	ft_map_getval2(t_map *map, size_t x, size_t y)
+{
+	if (x >= map->w || y >= map->h)
+		return (-1);
+	return map->array[(y * map->w + x)];
+}
+
 int	ft_map_setval(t_map *map, t_coord *coord, int value)
 {
 	if (value < 0)
@@ -59,6 +60,16 @@ int	ft_map_setval(t_map *map, t_coord *coord, int value)
 	if (ft_coord_x(coord) >= map->w || ft_coord_y(coord) >= map->h)
 		return (-1);
 	map->array[ft_coord_1d(coord, map->w)] = value;
+	return (0);
+}
+
+int	ft_map_setval2(t_map *map, size_t x, size_t y, int value)
+{
+	if (value < 0)
+		return (-1);
+	if (x >= map->w || y >= map->h)
+		return (-1);
+	map->array[y * map->w + x] = value;
 	return (0);
 }
 
