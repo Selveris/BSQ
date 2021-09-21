@@ -121,30 +121,29 @@ int	read_map(int fd, t_map *map, char *charset)
 	return (0);
 }
 
-t_map	*parse_file(char *path)
+t_map	*parse_file(char *path, char **charset)
 {
 	int		fd;
 	int		width;
 	int		height;
-	char	*charset;
 	t_map	*map;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_null_error("Cannot read file.\n"));
-	charset = malloc(sizeof(char) * 4);
+	*charset = malloc(sizeof(char) * 4);
 	if (charset == NULL)
 		return (ft_null_error("Memory error\n"));
-	if (read_header(fd, charset, &height))
+	if (read_header(fd, *charset, &height))
 		return (ft_null_error("Header not in the norm.\n"));
 	close (fd);
-	if (read_first_line(path, &width, charset))
+	if (read_first_line(path, &width, *charset))
 		return (ft_null_error("First line not in the norm.\n"));
 	map = ft_map_init(width, height);
 	if (map == NULL)
 		return (ft_null_error("Memory error\n"));
 	fd = open(path, O_RDONLY);
-	if (read_map(fd, map, charset))
+	if (read_map(fd, map, *charset))
 		return (ft_null_error("Map not in the norm.\n"));
 	close(fd);
 	return (map);

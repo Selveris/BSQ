@@ -14,6 +14,6 @@
 # define FT_PARSING_H
 # include "ft_map.h"
 
-t_map	*parse_file(char *path);
+t_map	*parse_file(char *path, char **charset);
 
 #endif
