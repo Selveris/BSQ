@@ -6,28 +6,21 @@
 /*   By: gluisier <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:14:59 by gluisier          #+#    #+#             */
-/*   Updated: 2021/09/21 21:01:20 by gluisier         ###   ########.fr       */
+/*   Updated: 2021/09/21 21:42:17 by gluisier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdlib.h>
-
-t_list	*ft_list_init(int val)
+#include <stdio.h>
+t_list	*ft_list_init(void)
 {
 	t_list	*list;
-	t_node	*node;
 
 	list = malloc(sizeof(*list));
 	if (list)
 	{
-		node = ft_node_init(val);
-		if (!node)
-		{
-			free(list);
-			return (NULL);
-		}
-		list->head = node;
+		list->head = NULL;
 	}
 	return (list);
 }
@@ -41,7 +34,7 @@ void	ft_list_free(t_list **list)
 		removed = ft_list_pop(*list);
 		while (removed)
 		{
-			ft_node_free(removed);
+			ft_node_free(&removed);
 			removed = ft_list_pop(*list);
 		}
 		free(*list);
@@ -69,7 +62,7 @@ t_node	*ft_list_pop(t_list *list)
 	t_node	*removed;
 
 	removed = NULL;
-	if (list)
+	if (list && list->head)
 	{
 		removed = list->head;
 		list->head = removed->next;
